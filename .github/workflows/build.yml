@@ -10,6 +10,6 @@ jobs:
           submodules: "recursive"
           fetch-depth: "0"
       - name: esp-idf build
-        uses: espressif/esp-idf-ci-action@main
+        uses: espressif/esp-idf-ci-action@bugfix/git_inside_repo
         with:
-          command: idf.py -C ./subdir build
+          command: echo "test" && git describe --tags && idf.py -C ./subdir build
