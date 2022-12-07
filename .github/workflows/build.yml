@@ -10,6 +10,6 @@ jobs:
           submodules: "recursive"
           fetch-depth: "0"
       - name: esp-idf build
-        uses: espressif/esp-idf-ci-action@v1
+        uses: espressif/esp-idf-ci-action@main
         with:
-          command: git describe --tags && idf.py -C ./subdir build
+          command: git config --global --add safe.directory /app && git describe --tags && idf.py -C ./subdir build
