@@ -1,0 +1,15 @@
+on: push
+jobs:
+  build:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repo
+        uses: actions/checkout@v3
+        with:
+          submodules: "recursive"
+          fetch-depth: "0"
+      - name: esp-idf build
+        uses: espressif/esp-idf-ci-action@v1
+        with:
+          command: git describe --tags && idf.py -C ./subdir build
