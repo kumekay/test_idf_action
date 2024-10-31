@@ -10,6 +10,9 @@ jobs:
           submodules: "recursive"
           fetch-depth: "0"
       - name: esp-idf build
-        uses: espressif/esp-idf-ci-action@bugfix/git_inside_repo
+        uses: AerofoilsGmbH/esp-idf-ci-action@additional-args
         with:
-          command: echo "test" && git describe --tags && idf.py -C ./subdir build
+          extra_docker_args: -v ./.ccache:/root/.ccache -e CCACHE_DIR=/root/.ccache
+          esp_idf_docker_image: kumekay/idf
+          esp_idf_version: v5.3.1
+          path: subdir
